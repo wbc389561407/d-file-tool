@@ -46,22 +46,13 @@ public class RunMain {
 
     private static boolean flag = false;
 
-
-    //    private static List<String> typeList;
-    private static Map<String, String> typeMap;
-
-    static {
-        typeMap = new HashMap<>();
-        typeMap.put("T2T(文档加密)", "T2T");
-        typeMap.put("RT2TM(加密后为MP4文件)", "RT2TM");
-        typeMap.put("RT2MM(加密后为MP4文件)", "RT2MM");
-        typeMap.put("R2T(时间戳)", "R2T");
-        typeMap.put("R2M(MD5)", "R2M");
-        typeMap.put("V2Z", "V2Z");
-    }
-
-
     public RunMain() {
+        String mode = PropertiesUtil.getValue("mode");
+        String[] split = mode.split(",");
+        DefaultComboBoxModel model = (DefaultComboBoxModel) comboBox1.getModel();
+        for (String s : split) {
+            model.addElement(s);
+        }
         vsText.setText(PropertiesUtil.getValue("vs"));
         new DropTarget(textField1, DnDConstants.ACTION_COPY_OR_MOVE,
                 new DropTargetAdapter() {
@@ -161,7 +152,7 @@ public class RunMain {
                         new Thread(() -> {
                             try {
                                 for (String s : fileList) {
-                                    String decrypt = AESFile.decrypt(s, password, typeMap.get(mode), stautsShow);
+                                    String decrypt = AESFile.decrypt(s, password, mode, stautsShow);
                                 }
                             } catch (RuntimeException e1) {
                                 JOptionPane.showMessageDialog(null, e1.getMessage());
@@ -290,11 +281,6 @@ public class RunMain {
         Font comboBox1Font = this.$$$getFont$$$(null, Font.BOLD, 18, comboBox1.getFont());
         if (comboBox1Font != null) comboBox1.setFont(comboBox1Font);
         final DefaultComboBoxModel defaultComboBoxModel1 = new DefaultComboBoxModel();
-        defaultComboBoxModel1.addElement("T2T(文档加密)");
-        defaultComboBoxModel1.addElement("RT2TM(加密后为MP4文件)");
-        defaultComboBoxModel1.addElement("RT2MM(加密后为MP4文件)");
-        defaultComboBoxModel1.addElement("R2T(时间戳)");
-        defaultComboBoxModel1.addElement("R2M(MD5)");
         comboBox1.setModel(defaultComboBoxModel1);
         comboBox1.setToolTipText("");
         root.add(comboBox1, new GridConstraints(3, 3, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -328,5 +314,6 @@ public class RunMain {
     public JComponent $$$getRootComponent$$$() {
         return root;
     }
+
 
 }
