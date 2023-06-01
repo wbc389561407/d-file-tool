@@ -185,17 +185,17 @@ public class RunMain {
         frame.setContentPane(new RunMain().root);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();//获取桌面像素
-        int WIDTH = dim.width / 2;
-        int HEIGHT = dim.height / 2;
-        if (WIDTH < 700) {
-            WIDTH = 700;
-        }
-        if (HEIGHT < 360) {
-            HEIGHT = 360;
-        }
+//        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();//获取桌面像素
+//        int WIDTH = dim.width / 2;
+//        int HEIGHT = dim.height / 2;
+//        if (WIDTH < 700) {
+//            WIDTH = 700;
+//        }
+//        if (HEIGHT < 360) {
+//            HEIGHT = 360;
+//        }
 
-        frame.setSize(WIDTH, HEIGHT);
+        frame.setSize(700, 360);
         frame.setLocationRelativeTo(null);//居中显示
         frame.setVisible(true);
 
