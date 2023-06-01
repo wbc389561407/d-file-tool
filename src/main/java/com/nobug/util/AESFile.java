@@ -13,10 +13,6 @@ import java.util.List;
  */
 public class AESFile {
 
-    public static void main(String[] args) {
-
-    }
-
     /**
      *  V3 V2 解密 回复原文件名称
      * @param path
@@ -135,93 +131,6 @@ public class AESFile {
         return outPath;
     }
 
-
-//    /**
-//            V3 加密 原文件名称存入文件 加密文件改为 时间戳
-//     *@param path
-//     * @param password
-//     * @return
-//     */
-//    public static String encryptR2T(String path,String password, JLabel show) {
-//        password = getPassword(password);
-//        List<FileEncUtilBean> fileEncUtilBeans = FileIOUtil.fileByteReader(path, 1024 * 10);
-//        show.setText("读取成功");
-//
-//        // 添加一些数据到头部
-//        File file = Paths.get(path).toFile();
-//        String fileName = file.getName();
-//        byte[] headByte = stringToBytes(fileName,1024*10);
-//        FileEncUtilBean bean = new FileEncUtilBean(headByte, headByte.length);
-//        fileEncUtilBeans.add(0,bean);
-//        // 添加一些数据到头部
-//
-//
-//        long l = System.currentTimeMillis();
-//
-//        for (FileEncUtilBean fileEncUtilBean : fileEncUtilBeans) {
-//            byte[] bytes = fileEncUtilBean.getBytes();
-//            byte[] encrypt = new byte[0];
-//            try {
-//                encrypt = AESUtil.encrypt(bytes, password);
-//            } catch (Exception e) {
-//                throw new RuntimeException("加密失败！");
-//            }
-//            fileEncUtilBean.setBytes(encrypt);
-//            fileEncUtilBean.setLen(encrypt.length);
-//        }
-//        show.setText("加密完成："+(System.currentTimeMillis() -l));
-//
-//        String outPath = FileUtil.getDecryptNameTime(path);
-//        FileIOUtil.fileByteWriter(fileEncUtilBeans,outPath);
-//        show.setText("写出成功！");
-//
-//        return outPath;
-//    }
-
-
-
-//    /**
-//        V2 加密 原文件名称存入文件
-//     * @param path
-//     * @param password
-//     * @return
-//     */
-//    public static String encryptV2(String path,String password) {
-//        password = getPassword(password);
-//        List<FileEncUtilBean> fileEncUtilBeans = FileIOUtil.fileByteReader(path, 1024 * 10);
-//        show.setText("读取成功");
-//
-//        // 添加一些数据到头部
-//        File file = Paths.get(path).toFile();
-//        String fileName = file.getName();
-//        byte[] headByte = stringToBytes(fileName,1024*10);
-//        FileEncUtilBean bean = new FileEncUtilBean(headByte, headByte.length);
-//        fileEncUtilBeans.add(0,bean);
-//        // 添加一些数据到头部
-//
-//
-//        long l = System.currentTimeMillis();
-//
-//        for (FileEncUtilBean fileEncUtilBean : fileEncUtilBeans) {
-//            byte[] bytes = fileEncUtilBean.getBytes();
-//            byte[] encrypt = new byte[0];
-//            try {
-//                encrypt = AESUtil.encrypt(bytes, password);
-//            } catch (Exception e) {
-//                throw new RuntimeException("加密失败！");
-//            }
-//            fileEncUtilBean.setBytes(encrypt);
-//            fileEncUtilBean.setLen(encrypt.length);
-//        }
-//        show.setText("加密完成："+(System.currentTimeMillis() -l));
-//
-//        String outPath = FileUtil.getDecryptName(path);
-//        FileIOUtil.fileByteWriter(fileEncUtilBeans,outPath);
-//        show.setText("写出成功！");
-//
-//        return outPath;
-//    }
-
     private static byte[] stringToBytes(String fileName, int len) {
         byte[] bytes = fileName.getBytes(StandardCharsets.UTF_8);
         byte[] headByte = new byte[len];
@@ -230,46 +139,6 @@ public class AESFile {
         }
         return headByte;
     }
-
-
-//    /**
-//     *  V3 V2 解密 回复原文件名称
-//     * @param path
-//     * @param password
-//     * @return
-//     */
-//    public static String decryptV2(String path,String password) {
-//        password = getPassword(password);
-//        List<FileEncUtilBean> fileEncUtilBeans = FileIOUtil.fileByteReader(path, 10256);
-//        show.setText("读取成功"+fileEncUtilBeans.size());
-//
-//        long l = System.currentTimeMillis();
-//        for (FileEncUtilBean fileEncUtilBean : fileEncUtilBeans) {
-//            byte[] bytes = fileEncUtilBean.getBytes();
-//            byte[] decrypt = new byte[0];
-//            try {
-//                decrypt = AESUtil.decrypt(bytes, password);
-//            } catch (Exception e) {
-//                throw new RuntimeException("解密失败！");
-//            }
-//            fileEncUtilBean.setBytes(decrypt);
-//            fileEncUtilBean.setLen(decrypt.length);
-//        }
-//        show.setText("解密完成："+(System.currentTimeMillis() - l));
-//
-//        FileEncUtilBean remove = fileEncUtilBeans.remove(0);
-//        byte[] bytes = remove.getBytes();
-//        show.setText("获取到头部数据：");
-//        String fileName = new String(bytes, StandardCharsets.UTF_8).trim();
-//        System.out.println(fileName);
-//
-//        String outPath = FileUtil.getOutPath(path,fileName);
-//        outPath = FileUtil.reFileNamePath(outPath);
-//        FileIOUtil.fileByteWriter(fileEncUtilBeans,outPath);
-//        show.setText("写出成功！");
-//        return outPath;
-//    }
-
 
     /**
      * v1.0

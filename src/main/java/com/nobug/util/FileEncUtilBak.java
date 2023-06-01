@@ -21,40 +21,10 @@ public class FileEncUtilBak {
     static String publicKey =  fileStringReader("publicKey.wbc");
     static String privateKey =  fileStringReader("privateKey.wbc");
 
-    public static void main(String[] args) {
-
-
-//        encryptRSA("C:\\Users\\Administrator\\Desktop\\dev1\\getanovel-v1.0.zip",
-//                "C:\\Users\\Administrator\\Desktop\\dev1\\getanovel-v1.0.zip.out");
-//
-//
-//
-//        decryptRSA("C:\\Users\\Administrator\\Desktop\\dev1\\getanovel-v1.0.zip.out",
-//                "C:\\Users\\Administrator\\Desktop\\dev1\\newfile666.zip");
-
-
-
-//        //只能执行一次 秘钥
-        RSAUtil.RSABean rsaBean = null;
-        try {
-            rsaBean = RSAUtil.generateKeyPair();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        fileByteWriter(rsaBean.getPrivateKey(), "privateKey.wbc");
-        fileByteWriter(rsaBean.getPublicKey(), "publicKey.wbc");
-
-
-
-
-
-    }
-
     private static void decryptRSA(String inFile, String outFile) {
 //        List<FileEncUtilBean> fileEncUtilBeans1 = FileIOUtil.fileByteReader(inFile);
         List<FileEncUtilBean> fileEncUtilBeans1 = fileByteReader(inFile);
         System.out.println("成功读取到文件");
-
 
         //正在写入
         System.out.println("正在解密"+fileEncUtilBeans1.size());
