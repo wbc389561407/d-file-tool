@@ -11,6 +11,9 @@
 ### 加密项目
 ### https://github.com/wbc389561407/e-file-tool.git
 
+### 解密项目
+### https://github.com/wbc389561407/d-file-tool.git
+
 ### 简单播放器
 ### https://github.com/wbc389561407/simple-player.git
 
